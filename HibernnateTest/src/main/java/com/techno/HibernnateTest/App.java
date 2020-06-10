@@ -10,10 +10,14 @@ public class App
 {
     public static void main( String[] args )
     {
-
-    Student std =new Student(0,"techno");
-    //std.setRollno(103);
-    //std.setName("vishnu");
+//StudentName stdname= new StudentName();
+//stdname.setFname("raj");
+//stdname.setLname("sharma");
+    	
+    Student std =new Student();
+//    std.setRollno(103);
+//    std.setMarks(50);
+//    std.setName(stdname);
     Configuration cfg=new Configuration().configure().addAnnotatedClass(Student.class);
     
     SessionFactory sf=cfg.buildSessionFactory();
@@ -21,7 +25,12 @@ public class App
     Session session=sf.openSession();
     Transaction tx= session.beginTransaction();
     
-    session.save(std);
+   // session.save(std);
+    
+    
+std=(Student)session.load(Student.class, 1);
+    
+ System.out.println(std);
     tx.commit();
     	
     }
