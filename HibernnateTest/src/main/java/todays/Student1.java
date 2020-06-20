@@ -1,18 +1,24 @@
 package todays;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
-public class Student {
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Student1 {
 	
 	
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		int rollno;
 		int marks;
-		StudentName name;
+		
 		public int getRollno() {
 			return rollno;
 		}
@@ -27,15 +33,10 @@ public class Student {
 		}
 		
 		
-		public StudentName getName() {
-			return name;
-		}
-		public void setName(StudentName name) {
-			this.name = name;
-		}
+		
 		@Override
 		public String toString() {
-			return "Student [rollno=" + rollno + ", marks=" + marks + ", name=" + name + "]";
+			return "Student [rollno=" + rollno + ", marks=" + marks + "]";
 		}
 		
 		
