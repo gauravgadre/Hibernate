@@ -1,4 +1,4 @@
-package day2206;
+package day2306;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
